@@ -1,0 +1,35 @@
+<div class="p-grid p-justify-center p-align-center ">
+    <ng-container *ngIf="userCalling">
+        <p-card header="{{userCalling.username}} is calling...." [style]="{'width': '35rem', 'margin-bottom': '2em'}">
+            <div class="p-grid p-fluid">
+                <div class="p-col">
+                    <button pButton pRipple type="button" class="p-button-success" label="Accept" (click)="acceptCall()"></button>
+                </div>
+                <div class="p-col">
+                    <button pButton pRipple type="button" class="p-button-danger" label="Reject" (click)="rejectCall()"></button>
+                </div>
+            </div>
+        </p-card>
+    </ng-container>
+    <p-card class="p-grid" [style]="{'width': '80rem', 'height':'40rem','margin-bottom': '2em'}">
+        <p-header>
+            <div class="p-grid p-justify-between">
+                <div class="p-text-center p-col p-text-bold" style="padding-top: 20px;">
+                    Room : {{this.user?.label}}
+                </div>
+                <div class="p-text-center p-col p-text-bold" style="padding-top: 20px;">
+                    <button pButton pRipple type="button" class="p-button-danger" label="Reject" (click)="endCall()"></button>
+                </div>
+            </div>
+        </p-header>
+        <div class="p-grid p-justify-between">
+            <div class="p-col-5">
+                <video #theirStream></video>
+            </div>
+            <div class="p-col-5">
+                <video #myStream></video>
+            </div>
+        </div>
+
+    </p-card>
+</div>
