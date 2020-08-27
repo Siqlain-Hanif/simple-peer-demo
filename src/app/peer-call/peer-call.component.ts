@@ -25,7 +25,11 @@ export class PeerCallComponent implements OnInit, AfterViewInit, OnDestroy {
   status: any;
   n = <any>navigator;
   localstream;
-  constructor(private activatedRoute: ActivatedRoute, private router: Router, private socketService: SocketService, private peerService: PeerService) {
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
+    public socketService: SocketService,
+    private peerService: PeerService) {
     this.activatedRoute.queryParams.subscribe(res => {
       this.status = res.status;
     })
@@ -66,9 +70,8 @@ export class PeerCallComponent implements OnInit, AfterViewInit, OnDestroy {
     // this.socketService.$peerConnected.subscribe((peer) => {
     this.n.getUserMedia = (this.n.getUserMedia || this.n.webkitGetUserMedia || this.n.mozGetUserMedia || this.n.msGetUserMedia);
     this.n.getUserMedia({
-      video: true, audio: false
+      video: true, audio: true
     }, (stream) => {
-      this.localstream = stream;
       myVideo.srcObject = stream;
       myVideo.play();
       let initiator = this.status == 'calling';
@@ -101,6 +104,9 @@ export class PeerCallComponent implements OnInit, AfterViewInit, OnDestroy {
       });
       this.socketService.peer.on('connect', () => {
         console.log('Connected');
+      });
+      this.socketService.peer.on('close', () => {
+        console.log('Closed Called');
       });
       this.socketService.peer.on('signal', (data) => {
         let serialized = JSON.stringify(data);

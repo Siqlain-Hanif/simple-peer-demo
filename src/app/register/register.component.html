@@ -1,7 +1,7 @@
-<div class="p-grid p-justify-center p-align-center ">
-
-    <p-card header="Enter your username" [style]="{'width': '35rem', 'margin-bottom': '2em'}">
-        <div class="p-fluid p-formgrid p-grid ">
+<div class="p-grid p-dir-col p-justify-center p-align-center">
+    <div class="p-col p-col-align-stretch card p-fluid p-p-5">
+        <h3>Enter your username</h3>
+        <div class="p-formgrid p-grid">
             <div class="p-field p-col-8">
                 <label for="username" class="p-sr-only">Firstname</label>
                 <div class="p-input-filled">
@@ -13,8 +13,10 @@
                 <button pButton pRipple type="button" label="Submit" [disabled]="!username&&!registering" (click)="register()"></button>
             </div>
         </div>
-    </p-card>
-    <p-card header="Online users, ({{socketService.username}})" [style]="{'width': '35rem', 'margin-bottom': '2em'}">
+    </div>
+    <div class="p-col p-col-align-stretch card p-fluid p-p-5">
+        <h5 style="color: tomato;">* Please provide a username to start calling.. </h5>
+        <h3>Online users : ({{socketService.username}})</h3>
         <p-listbox [options]="users" [(ngModel)]="selectedUser" [listStyle]="{'max-height':'400px'}" (onClick)="onUserSelect($event)">
             <ng-template let-user pTemplate="item">
                 <div class="p-grid p-fluid">
@@ -23,13 +25,13 @@
                     <div class="p-col">{{user.label|uppercase}} , {{user.value.status|uppercase}}</div>
                 </div>
             </ng-template>
-            <p-footer style="height: 20px;">
+            <!-- <p-footer style="height: 20px;">
                 <div class="p-grid" style="padding-top: 10px;">
                     <div class="p-text-center p-col p-text-bold">
                         Selected User: {{selectedUser?.username||'none'}}
                     </div>
                 </div>
-            </p-footer>
+            </p-footer> -->
         </p-listbox>
-    </p-card>
+    </div>
 </div>
