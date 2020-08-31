@@ -73,6 +73,7 @@ export class PeerCallComponent implements OnInit, AfterViewInit, OnDestroy {
       video: true, audio: true
     }, (stream) => {
       myVideo.srcObject = stream;
+      myVideo.muted = true;
       myVideo.play();
       let initiator = this.status == 'calling';
       this.socketService.peer = new SimplePeer({ initiator: initiator, trickle: false, stream: stream });
