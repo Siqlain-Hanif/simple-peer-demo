@@ -5,7 +5,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Component library used PrimeNG
 ### https://www.primefaces.org/primeng/showcase/#/
 ## Live Link (Deployed on heroku)
-### https://secure-falls-53416.herokuapp.com/
+### https://secure-falls-53416.herokuapp.com/ 
+#### Tested in Chrome, Microsft Egde
 
 ### Provide username to get started.. :D
 
